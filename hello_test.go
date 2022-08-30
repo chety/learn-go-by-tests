@@ -7,16 +7,28 @@ import (
 
 func TestHello(t *testing.T) {
 
-	t.Run("hello to a name when it is provided", func(t *testing.T) {
-		got := Hello("Rodik")
-		want := "Hello, Rodik"
-		assert.Equal(t, got, want)
-	})
-
 	t.Run("hello to world when name is not provided", func(t *testing.T) {
-		got := Hello("")
+		got := Hello("", "")
 		want := "Hello, World!"
 		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("hello to a name when it is provided", func(t *testing.T) {
+		got := Hello("Rodik", "")
+		want := "Hello, Rodik"
+		assert.Equal(t, want, got)
+	})
+
+	t.Run("Hola to a name when language is Spanish", func(t *testing.T) {
+		got := Hello("Mirko", "Spanish")
+		expected := "Hola, Mirko"
+		assert.Equal(t, expected, got)
+	})
+
+	t.Run("Bonjour to a name when language is French", func(t *testing.T) {
+		got := Hello("Azad", "French")
+		expected := "Bonjour, Azad"
+		assert.Equal(t, expected, got)
 	})
 }
 
