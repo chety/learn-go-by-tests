@@ -6,7 +6,7 @@
 
 ### TESTING
 
-- To run tests execute `go test -v`
+- To run tests execute `go test -v ./...`
 - If you want to run benchmarks execute `go test -bench=.`
 - If you want to see coverage execute `go test -cover`
 - We can create a coverage report(here for fmt package) by running `go test -covermode=count -coverprofile=count.out fmt`
