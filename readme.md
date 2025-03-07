@@ -3,6 +3,8 @@
 - Creating documentation file `godoc -http :8000`
 - If you do not have godoc then install `go install golang.org/x/tools/cmd/godoc@latest`
 - Navigate to `http://localhost:8000/pkg/` and enjoy documentation
+- If you want to see the project's itself documentation you can execute `pkgsite -open .`
+- Be sure that `pkgsite` is installed. Otherwise, run this command to install `go install golang.org/x/pkgsite/cmd/pkgsite@latest`
 
 ### TESTING
 

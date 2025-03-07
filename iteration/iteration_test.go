@@ -26,6 +26,12 @@ func BenchmarkRepeat(b *testing.B) {
 	}
 }
 
+func BenchmarkImproveRepeat(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		ImprovedRepeat("a", 5)
+	}
+}
+
 func ExampleRepeat() {
 	result := Repeat("chety", 2)
 	fmt.Println(result)

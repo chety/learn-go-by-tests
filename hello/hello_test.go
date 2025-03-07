@@ -1,7 +1,6 @@
-package hello_test
+package hello
 
 import (
-	"github.com/chety/learn-go-with-tests/hello"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -9,25 +8,25 @@ import (
 func TestHello(t *testing.T) {
 
 	t.Run("hello to `world` when name is not provided", func(t *testing.T) {
-		got := hello.Hello("", "")
+		got := Hello("", "")
 		want := "Hello, World!"
 		assertCorrectMessage(t, got, want)
 	})
 
 	t.Run("hello to a name when it is provided", func(t *testing.T) {
-		got := hello.Hello("Rodik", "")
+		got := Hello("Rodik", "")
 		want := "Hello, Rodik"
 		assert.Equal(t, want, got)
 	})
 
 	t.Run("Hola to a name when language is Spanish", func(t *testing.T) {
-		got := hello.Hello("Mirko", "Spanish")
+		got := Hello("Mirko", "Spanish")
 		expected := "Hola, Mirko"
 		assert.Equal(t, expected, got)
 	})
 
 	t.Run("Bonjour to a name when language is French", func(t *testing.T) {
-		got := hello.Hello("Rodik", "French")
+		got := Hello("Rodik", "French")
 		expected := "Bonjour, Rodik"
 		assert.Equal(t, expected, got)
 	})
