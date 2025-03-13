@@ -1,6 +1,7 @@
 package pointer
 
 import (
+	"errors"
 	"testing"
 )
 
@@ -14,8 +15,7 @@ func TestPointer(t *testing.T) {
 	})
 
 	t.Run("withdraw", func(t *testing.T) {
-		wallet := Wallet{}
-		wallet.Deposit(Bitcoin(100))
+		wallet := Wallet{balance: Bitcoin(100)}
 		err := wallet.Withdraw(Bitcoin(10))
 
 		assertNoError(t, err)
@@ -45,7 +45,7 @@ func assertError(t testing.TB, actual, expected error) {
 		t.Fatal("expected error got nothing")
 	}
 
-	if actual != expected {
+	if !errors.Is(actual, expected) {
 		t.Errorf("expected %s got %s", expected, actual)
 	}
 }

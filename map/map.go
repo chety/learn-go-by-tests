@@ -1,5 +1,7 @@
 package mapInfo
 
+import "sync"
+
 type Dictionary map[string]string
 type DictionaryError string
 
@@ -12,11 +14,11 @@ const (
 	WordAlreadyExistsError = DictionaryError("word already exists")
 )
 
-func (d Dictionary) Search(key string) (string, error) {
+func (d Dictionary) Search(key string) (*string, error) {
 	if value, found := d[key]; found {
-		return value, nil
+		return &value, nil
 	}
-	return "", NotFoundError
+	return nil, NotFoundError
 }
 
 func (d Dictionary) Add(key, value string) (bool, error) {
@@ -42,4 +44,17 @@ func (d Dictionary) Delete(key string) (bool, error) {
 	}
 	delete(d, key)
 	return true, nil
+}
+
+// Maps are by default not thread safe
+func threadSafeMap() {
+	var counter = struct {
+		sync.RWMutex
+		m map[string]int
+	}{m: make(map[string]int)}
+
+	counter.RLock()
+	counter.m["Javacript"] = 10
+	counter.RUnlock()
+
 }

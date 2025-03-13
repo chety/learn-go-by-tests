@@ -1,10 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"github.com/chety/learn-go-with-tests/hello"
+	"github.com/chety/learn-go-with-tests/mocks"
+	"os"
+	"time"
 )
 
 func main() {
-	fmt.Println(hello.Hello("Mirko", ""))
+	configurableSleeper := &mocks.ConfigurableSleeper{Duration: 3 * time.Second, Sleeper: time.Sleep}
+	mocks.CountDown(os.Stdout, configurableSleeper)
 }

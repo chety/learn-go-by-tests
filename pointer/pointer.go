@@ -18,7 +18,7 @@ type Wallet struct {
 	balance Bitcoin
 }
 
-// Deposit In Go, when you call a function or a method the arguments are copied.
+//when you call a function or a method the arguments are copied.
 // When calling func (w Wallet) Deposit(amount int) the w is a copy of whatever we called the method from
 
 //func (w Wallet) Deposit(amount int) {
